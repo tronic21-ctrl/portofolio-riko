@@ -1,7 +1,18 @@
 import { motion } from 'framer-motion'
 import { FaInstagram, FaTiktok } from 'react-icons/fa'
+import { useState, useEffect } from 'react'
 
 function SocialLinks() {
+    const [isMobile, setIsMobile] = useState(window.innerWidth < 768)
+
+  useEffect(() => {
+    const handleResize = () => setIsMobile(window.innerWidth < 768)
+    window.addEventListener('resize', handleResize)
+    return () => window.removeEventListener('resize', handleResize)
+  }, [])
+
+  if (isMobile) return null  // sembunyiin di mobile
+
     const socials = [
         { icon: <FaInstagram size={20} />, url: 'https://www.instagram.com/rikotronic'},
         { icon: <FaTiktok size={20} />, url: 'https://www.tiktok.com/@rikotoatubun2104'},
