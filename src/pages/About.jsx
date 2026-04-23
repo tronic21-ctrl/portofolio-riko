@@ -60,12 +60,17 @@ function About() {
             { icon: '⚛️', name: 'React', level: 'Intermediate' },
             { icon: '🌐', name: 'JavaScript', level: 'Intermediate' },
             { icon: '🎨', name: 'HTML & CSS', level: 'Intermediate' },
-            { icon: '🔷', name: 'Solidity', level: 'Beginner' },
-            { icon: '⛓️', name: 'Blockchain', level: 'Beginner' },
-            { icon: '🏦', name: 'DeFi', level: 'Beginner' },
+            { icon: '💠', name: 'Solidity', level: 'Intermediate' },
+            { icon: '🔗', name: 'Blockchain', level: 'Intermediate' },
+            { icon: '🏦', name: 'DeFi', level: 'Intermediate' },
             { icon: '📊', name: 'Ekonomi', level: 'Advanced' },
             { icon: '📈', name: 'Market Analysis', level: 'Intermediate' },
-            { icon: '🔗', name: 'Web3', level: 'Beginner' },
+            { icon: '💻', name: 'Web3', level: 'Intermediate' },
+            { icon: '⛑️', name: 'Hardhat', level: 'Beginner' },
+            { icon: '🌈', name: 'RainbowKit', level: 'Beginner' },
+            { icon: '📦', name: 'IPFS', level: 'Beginner' },
+            { icon: '⚡', name: 'Vite', level: 'Intermediate' },
+            { icon: '🎭', name: 'Framer Motion', level: 'Intermediate' },
           ].map((skill, index) => (
             <motion.div
               key={skill.name}

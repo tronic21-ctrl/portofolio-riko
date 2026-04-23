@@ -14,7 +14,7 @@ function Projects() {
       title: 'Portfolio Website',
       desc: 'Portfolio personal dengan React, Framer Motion, dan React Router. Dark theme dengan cyan accent.',
       tech: ['React', 'Framer Motion', 'React Router', 'Vite'],
-      live: 'https://portofolio-riko-mu.vercel.app',
+      live: null,
       github: 'https://github.com/tronic21-ctrl/portofolio-riko',
       status: 'Live',
     },
