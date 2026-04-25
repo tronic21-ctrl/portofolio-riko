@@ -1,32 +1,32 @@
 import { motion } from 'framer-motion'
+import { useLang } from '../context/LanguageContext'
 
 function Projects() {
-  const projects = [
+  const { t } = useLang()
+  const p = t.projects
+
+  const projectsMeta = [
     {
-      title: 'Crypto Tracker',
-      desc: 'Web app real-time harga cryptocurrency menggunakan CoinGecko API. Fitur: auto-refresh, search, color indicator harga.',
       tech: ['React', 'JavaScript', 'Fetch API', 'Vite'],
       live: 'https://crypto-tracker-pi-silk.vercel.app',
       github: 'https://github.com/tronic21-ctrl/crypto-tracker',
       status: 'Live',
     },
     {
-      title: 'Portfolio Website',
-      desc: 'Portfolio personal dengan React, Framer Motion, dan React Router. Dark theme dengan cyan accent.',
       tech: ['React', 'Framer Motion', 'React Router', 'Vite'],
       live: null,
       github: 'https://github.com/tronic21-ctrl/portofolio-riko',
       status: 'Live',
     },
     {
-      title: 'DeFi Dashboard',
-      desc: 'Full stack DeFi dashboard dengan wallet integration, real-time ETH price, transaction history via Etherscan API, dan IPFS metadata upload via Pinata.',
       tech: ['React', 'RainbowKit', 'wagmi', 'ethers.js', 'IPFS', 'Vite'],
       live: 'https://defi-dashboard-pi.vercel.app/',
       github: 'https://github.com/tronic21-ctrl/defi-dashboard',
       status: 'Live',
     },
   ]
+
+  const projects = p.items.map((item, i) => ({ ...item, ...projectsMeta[i] }))
 
   return (
     <div style={{ minHeight: '100vh', padding: '120px 40px 80px' }}>
@@ -40,10 +40,10 @@ function Projects() {
           style={{ marginBottom: '48px' }}
         >
           <h1 style={{ fontSize: '42px', marginBottom: '12px', color: '#f1f5f9' }}>
-            Projects
+            {p.title}
           </h1>
           <p style={{ color: '#94a3b8', fontSize: '17px' }}>
-            Kumpulan project yang sedang dan sudah saya bangun.
+            {p.subtitle}
           </p>
         </motion.div>
 
@@ -64,7 +64,14 @@ function Projects() {
               }}
             >
               {/* Top row */}
-              <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: '12px', flexWrap: 'wrap', gap: '8px', }}>
+              <div style={{
+                display: 'flex',
+                justifyContent: 'space-between',
+                alignItems: 'flex-start',
+                marginBottom: '12px',
+                flexWrap: 'wrap',
+                gap: '8px',
+              }}>
                 <h2 style={{ color: '#f1f5f9', fontSize: '20px' }}>{project.title}</h2>
                 <span style={{
                   fontSize: '12px',
@@ -108,7 +115,7 @@ function Projects() {
                     whileHover={{ color: '#38bdf8' }}
                     style={{ color: '#94a3b8', fontSize: '14px', textDecoration: 'none' }}
                   >
-                    🔗 Live Demo
+                    {p.liveDemo}
                   </motion.a>
                 )}
                 {project.github && (
@@ -118,15 +125,13 @@ function Projects() {
                     whileHover={{ color: '#38bdf8' }}
                     style={{ color: '#94a3b8', fontSize: '14px', textDecoration: 'none' }}
                   >
-                    📁 GitHub
+                    {p.github}
                   </motion.a>
                 )}
               </div>
-
             </motion.div>
           ))}
         </div>
-
       </div>
     </div>
   )

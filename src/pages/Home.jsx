@@ -1,9 +1,12 @@
 import { motion } from 'framer-motion'
 import { useState, useEffect } from 'react'
 import logoRT from '../assets/RT.png'
+import { useLang } from '../context/LanguageContext'
 
 function Home() {
   const [isMobile, setIsMobile] = useState(window.innerWidth < 768)
+  const { t, lang } = useLang()
+  const h = t.home
 
   useEffect(() => {
     const handleResize = () => setIsMobile(window.innerWidth < 768)
@@ -20,7 +23,7 @@ function Home() {
       padding: isMobile ? '100px 24px 60px' : '0 40px',
       paddingTop: isMobile ? '100px' : '80px',
     }}>
-      <div style={{ 
+      <div style={{
         maxWidth: '900px',
         width: '100%',
         display: 'flex',
@@ -30,27 +33,24 @@ function Home() {
         gap: isMobile ? '40px' : '60px',
       }}>
 
-        {/* Logo - mobile: atas, desktop: kanan */}
+        {/* Logo mobile */}
         {isMobile && (
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
           >
-            <img 
-              src={logoRT} 
+            <img
+              src={logoRT}
               alt="Riko Tronic Logo"
-              style={{ 
-                width: '160px',
-                filter: 'drop-shadow(0 0 20px #000000)'
-              }}
+              style={{ width: '160px', filter: 'drop-shadow(0 0 20px #000000)' }}
             />
           </motion.div>
         )}
 
-        {/* KIRI - semua teks */}
-        <div style={{ 
-          flex: 1, 
+        {/* Kiri - teks */}
+        <div style={{
+          flex: 1,
           textAlign: isMobile ? 'center' : 'left',
           width: '100%',
         }}>
@@ -67,10 +67,10 @@ function Home() {
               padding: '6px 20px',
               color: '#38bdf8',
               fontSize: '14px',
-              marginBottom: '24px'
+              marginBottom: '24px',
             }}
           >
-            Economics x Web3
+            {h.badge}
           </motion.div>
 
           {/* Nama */}
@@ -78,13 +78,9 @@ function Home() {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.2 }}
-            style={{ 
-              fontSize: isMobile ? '40px' : '56px', 
-              lineHeight: 1.2, 
-              marginBottom: '16px' 
-            }}
+            style={{ fontSize: isMobile ? '40px' : '56px', lineHeight: 1.2, marginBottom: '16px' }}
           >
-            hi, i'm{' '}
+            {h.greeting}{' '}
             <span style={{
               background: 'linear-gradient(135deg, #38bdf8, #818cf8)',
               WebkitBackgroundClip: 'text',
@@ -99,16 +95,12 @@ function Home() {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.4 }}
-            style={{
-              fontSize: '17px',
-              color: '#94a3b8',
-              marginBottom: '40px',
-              lineHeight: 1.7,
-            }}
+            style={{ fontSize: '17px', color: '#94a3b8', marginBottom: '40px', lineHeight: 1.7 }}
           >
-            Undergraduate in Economics | Currently diving deep into {' '}
-            <span style={{ color: '#818cf8' }}>Web3</span> and{' '}
-            <span style={{ color: '#38bdf8' }}>Blockchain Technology</span>.
+            {h.subtitle}{' '}
+            <span style={{ color: '#818cf8' }}>{h.web3}</span>{' '}
+            {lang === 'id' ? 'dan' : 'and'}{' '}
+            <span style={{ color: '#38bdf8' }}>{h.blockchain}</span>.
           </motion.p>
 
           {/* Buttons */}
@@ -116,10 +108,10 @@ function Home() {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.6 }}
-            style={{ 
-              display: 'flex', 
+            style={{
+              display: 'flex',
               flexDirection: isMobile ? 'column' : 'row',
-              gap: '16px', 
+              gap: '16px',
               marginBottom: '40px',
               justifyContent: isMobile ? 'center' : 'flex-start',
               flexWrap: 'wrap',
@@ -140,7 +132,7 @@ function Home() {
                 display: 'inline-block',
               }}
             >
-              Lihat Projects →
+              {h.btnProjects}
             </motion.a>
 
             <motion.a href="/about"
@@ -157,7 +149,7 @@ function Home() {
                 display: 'inline-block',
               }}
             >
-              Tentang Saya
+              {h.btnAbout}
             </motion.a>
           </motion.div>
 
@@ -166,14 +158,14 @@ function Home() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 0.5, delay: 0.8 }}
-            style={{ 
-              display: 'flex', 
-              gap: '12px', 
+            style={{
+              display: 'flex',
+              gap: '12px',
               flexWrap: 'wrap',
               justifyContent: isMobile ? 'center' : 'flex-start',
             }}
           >
-            {['Economics', 'Web3', 'DeFi', 'React', 'Blockchain'].map(tag => (
+            {h.tags.map(tag => (
               <span key={tag} style={{
                 backgroundColor: '#1e293b',
                 border: '1px solid #334155',
@@ -189,7 +181,7 @@ function Home() {
 
         </div>
 
-        {/* KANAN - Logo (desktop only) */}
+        {/* Kanan - Logo desktop */}
         {!isMobile && (
           <motion.div
             initial={{ opacity: 0, x: 40 }}
@@ -197,13 +189,10 @@ function Home() {
             transition={{ duration: 0.6, delay: 0.3 }}
             style={{ flexShrink: 0 }}
           >
-            <img 
-              src={logoRT} 
+            <img
+              src={logoRT}
               alt="Riko Tronic Logo"
-              style={{ 
-                width: '280px',
-                filter: 'drop-shadow(0 0 20px #000000)'
-              }}
+              style={{ width: '280px', filter: 'drop-shadow(0 0 20px #000000)' }}
             />
           </motion.div>
         )}
