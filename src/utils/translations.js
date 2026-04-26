@@ -53,7 +53,7 @@ const translations = {
       items: [
         {
           title: 'Crypto Tracker',
-          desc: 'Real-time cryptocurrency price web app using CoinGecko API. Features: auto-refresh, search, and price color indicator.',
+          desc: 'Real-time cryptocurrency tracker with live prices, sparkline charts, 24h change, market cap, volume, and sort feature. Powered by CoinGecko API.',
         },
         {
           title: 'Portfolio Website',
@@ -121,7 +121,7 @@ const translations = {
       items: [
         {
           title: 'Crypto Tracker',
-          desc: 'Web app real-time harga cryptocurrency menggunakan CoinGecko API. Fitur: auto-refresh, search, color indicator harga.',
+          desc: 'Tracker cryptocurrency real-time dengan harga live, grafik sparkline, perubahan 24j, market cap, volume, dan fitur sort. Powered by CoinGecko API.',
         },
         {
           title: 'Portfolio Website',

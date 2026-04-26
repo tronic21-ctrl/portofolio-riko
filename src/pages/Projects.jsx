@@ -1,5 +1,8 @@
 import { motion } from 'framer-motion'
 import { useLang } from '../context/LanguageContext'
+import previewCrypto from '../assets/preview-crypto.png'
+import previewPortfolio from '../assets/preview-portfolio.png'
+import previewDefi from '../assets/preview-defi.png'
 
 function Projects() {
   const { t } = useLang()
@@ -7,18 +10,21 @@ function Projects() {
 
   const projectsMeta = [
     {
-      tech: ['React', 'JavaScript', 'Fetch API', 'Vite'],
+      image: previewCrypto,
+      tech: ['React', 'JavaScript', 'Fetch API', 'Vite', 'Framer Motion', 'Recharts'],
       live: 'https://crypto-tracker-pi-silk.vercel.app',
       github: 'https://github.com/tronic21-ctrl/crypto-tracker',
       status: 'Live',
     },
     {
+      image: previewPortfolio,
       tech: ['React', 'Framer Motion', 'React Router', 'Vite'],
       live: null,
       github: 'https://github.com/tronic21-ctrl/portofolio-riko',
       status: 'Live',
     },
     {
+      image: previewDefi,
       tech: ['React', 'RainbowKit', 'wagmi', 'ethers.js', 'IPFS', 'Vite'],
       live: 'https://defi-dashboard-pi.vercel.app/',
       github: 'https://github.com/tronic21-ctrl/defi-dashboard',
@@ -63,6 +69,21 @@ function Projects() {
                 padding: '28px',
               }}
             >
+              {/* Preview Image */}
+              {project.image && (
+                <img
+                src={project.image}
+                alt={project.title}
+                style={{
+                  width: '100%',
+                  height: '200px',
+                  objectFit: 'cover',
+                  borderRadius: '10px',
+                  marginBottom: '20px',
+                  border: '1px solid #1e293b',
+                  }}
+                />
+              )}
               {/* Top row */}
               <div style={{
                 display: 'flex',
