@@ -1,5 +1,7 @@
 import { motion } from 'framer-motion'
 import { useLang } from '../context/LanguageContext'
+import { FaGithub } from 'react-icons/fa6'
+
 import previewCrypto from '../assets/preview-crypto.png'
 import previewPortfolio from '../assets/preview-portfolio.png'
 import previewDefi from '../assets/preview-defi.png'
@@ -45,10 +47,10 @@ function Projects() {
           transition={{ duration: 0.5 }}
           style={{ marginBottom: '48px' }}
         >
-          <h1 style={{ fontSize: '42px', marginBottom: '12px', color: '#f1f5f9' }}>
+          <h1 style={{ fontSize: '42px', marginBottom: '12px', color: 'var(--text-heading)' }}>
             {p.title}
           </h1>
-          <p style={{ color: '#94a3b8', fontSize: '17px' }}>
+          <p style={{ color: 'var(--text-primary)', fontSize: '17px' }}>
             {p.subtitle}
           </p>
         </motion.div>
@@ -61,29 +63,31 @@ function Projects() {
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: index * 0.1 }}
-              whileHover={{ borderColor: '#38bdf8', x: 6 }}
+              whileHover={{ borderColor: 'var(--blue-primary)', x: 6 }}
               style={{
-                backgroundColor: '#0f172a',
-                border: '1px solid #1e293b',
+                backgroundColor: 'var(--bg-card)',
+                border: '1px solid var(--border)',
                 borderRadius: '16px',
                 padding: '28px',
+                transition: 'all 0.3s ease',
               }}
             >
               {/* Preview Image */}
               {project.image && (
                 <img
-                src={project.image}
-                alt={project.title}
-                style={{
-                  width: '100%',
-                  height: '200px',
-                  objectFit: 'cover',
-                  borderRadius: '10px',
-                  marginBottom: '20px',
-                  border: '1px solid #1e293b',
+                  src={project.image}
+                  alt={project.title}
+                  style={{
+                    width: '100%',
+                    height: '200px',
+                    objectFit: 'cover',
+                    borderRadius: '10px',
+                    marginBottom: '20px',
+                    border: '1px solid var(--border)',
                   }}
                 />
               )}
+
               {/* Top row */}
               <div style={{
                 display: 'flex',
@@ -93,60 +97,103 @@ function Projects() {
                 flexWrap: 'wrap',
                 gap: '8px',
               }}>
-                <h2 style={{ color: '#f1f5f9', fontSize: '20px' }}>{project.title}</h2>
+                <h2 style={{ color: 'var(--text-heading)', fontSize: '20px' }}>
+                  {project.title}
+                </h2>
+                
                 <span style={{
                   fontSize: '12px',
                   padding: '4px 12px',
                   borderRadius: '50px',
-                  backgroundColor: project.status === 'Live' ? '#38bdf820' : project.status === 'In Progress' ? '#818cf820' : '#1e293b',
-                  color: project.status === 'Live' ? '#38bdf8' : project.status === 'In Progress' ? '#818cf8' : '#94a3b8',
-                  border: `1px solid ${project.status === 'Live' ? '#38bdf840' : project.status === 'In Progress' ? '#818cf840' : '#334155'}`,
+                  backgroundColor: project.status === 'Live' 
+                    ? 'var(--blue-glow)' 
+                    : '#1e293b',
+                  color: project.status === 'Live' 
+                    ? 'var(--blue-primary)' 
+                    : 'var(--text-secondary)',
+                  border: `1px solid ${project.status === 'Live' 
+                    ? 'var(--blue-primary)' 
+                    : 'var(--border)'}`,
                 }}>
                   {project.status}
                 </span>
               </div>
 
-              {/* Desc */}
-              <p style={{ color: '#94a3b8', fontSize: '15px', lineHeight: 1.7, marginBottom: '16px' }}>
+              {/* Description */}
+              <p style={{ 
+                color: 'var(--text-primary)', 
+                fontSize: '15px', 
+                lineHeight: 1.7, 
+                marginBottom: '16px' 
+              }}>
                 {project.desc}
               </p>
 
               {/* Tech tags */}
-              <div style={{ display: 'flex', gap: '8px', flexWrap: 'wrap', marginBottom: '20px' }}>
-                {project.tech.map(t => (
-                  <span key={t} style={{
-                    backgroundColor: '#1e293b',
-                    border: '1px solid #334155',
-                    borderRadius: '6px',
-                    padding: '4px 12px',
-                    fontSize: '13px',
-                    color: '#94a3b8',
-                  }}>
-                    {t}
+              <div style={{ 
+                display: 'flex', 
+                gap: '8px', 
+                flexWrap: 'wrap', 
+                marginBottom: '20px' 
+              }}>
+                {project.tech.map((tech, i) => (
+                  <span 
+                    key={i} 
+                    style={{
+                      backgroundColor: 'var(--bg-card2)',
+                      border: '1px solid var(--border)',
+                      borderRadius: '6px',
+                      padding: '4px 12px',
+                      fontSize: '13px',
+                      color: 'var(--text-secondary)',
+                    }}
+                  >
+                    {tech}
                   </span>
                 ))}
               </div>
 
-              {/* Links */}
-              <div style={{ display: 'flex', gap: '12px' }}>
+                            {/* Links */}
+              <div style={{ display: 'flex', gap: '20px', flexWrap: 'wrap' }}>
                 {project.live && (
                   <motion.a
                     href={project.live}
                     target="_blank"
-                    whileHover={{ color: '#38bdf8' }}
-                    style={{ color: '#94a3b8', fontSize: '14px', textDecoration: 'none' }}
+                    rel="noopener noreferrer"
+                    whileHover={{ color: 'var(--blue-primary)', scale: 1.05 }}
+                    style={{ 
+                      color: 'var(--text-secondary)', 
+                      fontSize: '15px', 
+                      textDecoration: 'none',
+                      display: 'flex',
+                      alignItems: 'center',
+                      gap: '8px',
+                      transition: 'all 0.2s ease'
+                    }}
                   >
-                    {p.liveDemo}
+                    <span style={{ fontSize: '18px' }}>🔗</span>
+                    Live Demo
                   </motion.a>
                 )}
+
                 {project.github && (
                   <motion.a
                     href={project.github}
                     target="_blank"
-                    whileHover={{ color: '#38bdf8' }}
-                    style={{ color: '#94a3b8', fontSize: '14px', textDecoration: 'none' }}
+                    rel="noopener noreferrer"
+                    whileHover={{ color: 'var(--blue-primary)', scale: 1.05 }}
+                    style={{ 
+                      color: 'var(--text-secondary)', 
+                      fontSize: '15px', 
+                      textDecoration: 'none',
+                      display: 'flex',
+                      alignItems: 'center',
+                      gap: '8px',
+                      transition: 'all 0.2s ease'
+                    }}
                   >
-                    {p.github}
+                    <FaGithub size={18} />
+                    GitHub
                   </motion.a>
                 )}
               </div>

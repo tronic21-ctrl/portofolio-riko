@@ -2,10 +2,12 @@ import { motion } from 'framer-motion'
 import { useState, useEffect } from 'react'
 import logoRT from '../assets/RT.png'
 import { useLang } from '../context/LanguageContext'
+import { useTheme } from '../context/ThemeContext'
 
 function Home() {
   const [isMobile, setIsMobile] = useState(window.innerWidth < 768)
   const { t, lang } = useLang()
+  const { theme } = useTheme()
   const h = t.home
 
   useEffect(() => {
@@ -43,7 +45,12 @@ function Home() {
             <img
               src={logoRT}
               alt="Riko Tronic Logo"
-              style={{ width: '160px', filter: 'drop-shadow(0 0 20px #000000)' }}
+              style={{
+                width: '160px',
+                filter: theme === 'light'
+                ? 'drop-shadow(0 0 15px #38bdf840)'
+                : 'drop-shadow(0 0 20px #000000)'
+              }}
             />
           </motion.div>
         )}
@@ -62,10 +69,10 @@ function Home() {
             transition={{ duration: 0.5 }}
             style={{
               display: 'inline-block',
-              border: '1px solid #38bdf8',
+              border: '1px solid var(--blue-primary)',
               borderRadius: '50px',
               padding: '6px 20px',
-              color: '#38bdf8',
+              color: 'var(--blue-primary)',
               fontSize: '14px',
               marginBottom: '24px',
             }}
@@ -95,12 +102,12 @@ function Home() {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.4 }}
-            style={{ fontSize: '17px', color: '#94a3b8', marginBottom: '40px', lineHeight: 1.7 }}
+            style={{ fontSize: '17px', color: 'var(--text-primary)', marginBottom: '40px', lineHeight: 1.7 }}
           >
             {h.subtitle}{' '}
             <span style={{ color: '#818cf8' }}>{h.web3}</span>{' '}
             {lang === 'id' ? 'dan' : 'and'}{' '}
-            <span style={{ color: '#38bdf8' }}>{h.blockchain}</span>.
+            <span style={{ color: 'var(--blue-primary)' }}>{h.blockchain}</span>.
           </motion.p>
 
           {/* Buttons */}
@@ -118,7 +125,11 @@ function Home() {
             }}
           >
             <motion.a href="/projects"
-              whileHover={{ backgroundColor: '#0ea5e9', boxShadow: '0 0 25px #38bdf840', scale: 1.05 }}
+              whileHover={{ 
+                backgroundColor: '#0ea5e9', 
+                boxShadow: theme === 'light' ? '0 0 25px #00000040' : '0 0 25px #38bdf840',
+                scale: 1.05 
+              }}
               whileTap={{ scale: 0.97 }}
               transition={{ duration: 0.2 }}
               style={{
@@ -136,7 +147,11 @@ function Home() {
             </motion.a>
 
             <motion.a href="/about"
-              whileHover={{ backgroundColor: '#38bdf815', boxShadow: '0 0 20px #38bdf830', scale: 1.05 }}
+              whileHover={{ 
+                backgroundColor: '#38bdf815', 
+                boxShadow: theme === 'light' ? '0 0 20px #00000040' : '0 0 20px #38bdf830',
+                scale: 1.05 
+              }}
               whileTap={{ scale: 0.97 }}
               transition={{ duration: 0.2 }}
               style={{
@@ -166,13 +181,13 @@ function Home() {
             }}
           >
             {h.tags.map(tag => (
-              <span key={tag} style={{
-                backgroundColor: '#1e293b',
-                border: '1px solid #334155',
+            <span key={tag} style={{
+                backgroundColor: 'var(--bg-card2)',
+                border: '1px solid var(--border)',
                 borderRadius: '8px',
                 padding: '8px 16px',
                 fontSize: '14px',
-                color: '#94a3b8',
+                color: 'var(--text-secondary)',
               }}>
                 {tag}
               </span>
@@ -192,7 +207,10 @@ function Home() {
             <img
               src={logoRT}
               alt="Riko Tronic Logo"
-              style={{ width: '280px', filter: 'drop-shadow(0 0 20px #000000)' }}
+              style={{ width: '280px', filter: theme === 'light'
+                ? 'drop-shadow(0 0 15px #38bdf840)'
+                : 'drop-shadow(0 0 20px #000000)'
+              }}
             />
           </motion.div>
         )}

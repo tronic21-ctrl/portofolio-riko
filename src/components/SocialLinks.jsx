@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion'
-import { FaInstagram, FaTiktok } from 'react-icons/fa'
+import { FaInstagram, FaXTwitter, FaGithub } from 'react-icons/fa6'
 import { useState, useEffect } from 'react'
 
 function SocialLinks() {
@@ -11,11 +11,12 @@ function SocialLinks() {
     return () => window.removeEventListener('resize', handleResize)
   }, [])
 
-  if (isMobile) return null  // sembunyiin di mobile
+  if (isMobile) return null
 
     const socials = [
-        { icon: <FaInstagram size={20} />, url: 'https://www.instagram.com/rikotronic'},
-        { icon: <FaTiktok size={20} />, url: 'https://www.tiktok.com/@rikotoatubun2104'},
+        { icon: <FaInstagram size={20} />, url: 'https://www.instagram.com/rikotronic', label: 'Instagram' },
+        { icon: <FaXTwitter size={20} />, url: 'https://x.com/rikotronic', label: 'Twitter' },
+        { icon: <FaGithub size={20} />, url: 'https://github.com/tronic21-ctrl', label: 'GitHub' },
     ]
 
     return (
@@ -31,18 +32,20 @@ function SocialLinks() {
         }}>
             {socials.map(social =>(
                 <motion.a
-                key={social.label}
+                key={social.url}
                 href={social.url}
                 target="_blank"
+                rel="noopener noreferrer"
+                aria-label={social.label}
+                title={social.label}
                 whileHover={{ scale: 1.2, color: '#38bdf8' }}
                 transition={{ duration: 0.2 }}
                 style={{
                     color: '#94a3b8',
                     textDecoration: 'none',
-                    fontSize: '13px',
-                    fontWeight: 'bold',
-                    letterSpacing: '2px',
-                    writingMode: 'vertical-rl',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
                 }}
                 >
                     {social.icon}
