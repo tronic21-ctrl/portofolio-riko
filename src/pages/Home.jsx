@@ -85,17 +85,23 @@ function Home() {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.2 }}
-            style={{ fontSize: isMobile ? '40px' : '56px', lineHeight: 1.2, marginBottom: '16px' }}
+            style={{ 
+              fontSize: isMobile ? '40px' : '56px', // Ukuran di HP sedikit diperkecil dari 40px ke 34px
+              lineHeight: 1.2, 
+              marginBottom: '16px' 
+            }}
           >
             {h.greeting}{' '}
             <span style={{
               background: 'linear-gradient(135deg, #38bdf8, #818cf8)',
               WebkitBackgroundClip: 'text',
               WebkitTextFillColor: 'transparent',
+              whiteSpace: 'nowrap' // Mencegah nama terpisah ke baris baru
             }}>
               Riko Tronic
             </span>
           </motion.h1>
+
 
           {/* Subtitle */}
           <motion.p

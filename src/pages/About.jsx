@@ -4,7 +4,7 @@ import { useLang } from '../context/LanguageContext'
 
 function About() {
   const [isMobile, setIsMobile] = useState(window.innerWidth < 768)
-  const { t } = useLang()
+  const { t, lang } = useLang()   // Tambah 'lang' untuk terjemahan nama skill
   const a = t.about
 
   useEffect(() => {
@@ -20,7 +20,12 @@ function About() {
     { icon: '💠', name: 'Solidity', level: 'Intermediate' },
     { icon: '🔗', name: 'Blockchain', level: 'Intermediate' },
     { icon: '🏦', name: 'DeFi', level: 'Intermediate' },
-    { icon: '📊', name: 'Ekonomi', level: 'Advanced' },
+    { 
+      icon: '📊', 
+      name_en: 'Economy', 
+      name_id: 'Ekonomi', 
+      level: 'Advanced' 
+    },
     { icon: '📈', name: 'Market Analysis', level: 'Intermediate' },
     { icon: '💻', name: 'Web3', level: 'Intermediate' },
     { icon: '⛑️', name: 'Hardhat', level: 'Beginner' },
@@ -75,34 +80,50 @@ function About() {
             gridTemplateColumns: isMobile ? 'repeat(2, 1fr)' : 'repeat(3, 1fr)',
             gap: '16px',
           }}>
-            {skills.map((skill, index) => (
-              <motion.div
-                key={skill.name}
-                whileHover={{ borderColor: 'var(--blue-primary)', scale: 1.03 }}
-                transition={{ duration: 0.2 }}
-                style={{
-                  backgroundColor: 'var(--bg-card)',
-                  border: '1px solid var(--border)',
-                  borderRadius: '12px',
-                  padding: '20px',
-                  display: 'flex',
-                  flexDirection: 'column',
-                  gap: '8px',
-                }}
-              >
-                <span style={{ fontSize: '28px' }}>{skill.icon}</span>
-                <span style={{ color: 'var(--text-heading)', fontWeight: 'bold', fontSize: '15px' }}>
-                  {skill.name}
-                </span>
-                <span style={{
-                  color: skill.level === 'Advanced' ? 'var(--blue-primary)' :
-                    skill.level === 'Intermediate' ? 'var(--purple-primary)' : 'var(--text-secondary)',
-                  fontSize: '13px',
-                }}>
-                  {a.skillLevels[skill.level]}
-                </span>
-              </motion.div>
-            ))}
+            {skills.map((skill, index) => {
+              const displayName = lang === 'id' 
+                ? (skill.name_id || skill.name) 
+                : (skill.name_en || skill.name);
+
+              const levelColor = skill.level === 'Advanced' 
+                ? 'var(--blue-dark)' 
+                : skill.level === 'Intermediate' 
+                  ? 'var(--blue-dark)' 
+                  : 'var(--blue-dark)';
+
+              return (
+                <motion.div
+                  key={skill.name}
+                  whileHover={{ borderColor: 'var(--blue-primary)', scale: 1.03 }}
+                  transition={{ duration: 0.2 }}
+                  style={{
+                    backgroundColor: 'var(--bg-card)',
+                    border: '1px solid var(--border)',
+                    borderRadius: '12px',
+                    padding: '20px',
+                    display: 'flex',
+                    flexDirection: 'column',
+                    gap: '8px',
+                  }}
+                >
+                  <span style={{ fontSize: '28px' }}>{skill.icon}</span>
+                  <span style={{ 
+                    color: 'var(--text-heading)', 
+                    fontWeight: 'bold', 
+                    fontSize: '15px' 
+                  }}>
+                    {displayName}
+                  </span>
+                  <span style={{
+                    color: levelColor,
+                    fontSize: '13px',
+                    fontWeight: ['Advanced', 'Intermediate', 'Beginner'].includes(skill.level) ? '400' : '300'
+                  }}>
+                    {a.skillLevels[skill.level]}
+                  </span>
+                </motion.div>
+              );
+            })}
           </div>
         </motion.div>
 
@@ -127,7 +148,7 @@ function About() {
             }} />
 
             {a.journey.map((item, index) => {
-              const color = index % 2 === 0 ? '#38bdf8' : '#818cf8'
+              const color = index % 2 === 0 ? 'var(--blue-primary)' : '#818cf8'
               return (
                 <motion.div
                   key={index}

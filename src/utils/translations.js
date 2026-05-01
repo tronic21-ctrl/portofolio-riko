@@ -23,9 +23,9 @@ const translations = {
     about: {
       title: 'About Me',
       bio1: 'Economics graduate from',
-      bio2: 'UNINGRAT TUAL',
+      bio2: 'UNINGRAT TUAL ',
       bio3: "2025, previously active as a content creator on YouTube & TikTok. Now focused on building a career at the intersection of",
-      bio4: 'Economics',
+      bio4: 'Economics ',
       bio5: 'and',
       bio6: 'Web3',
       bio7: '— learning Smart Contracts, Blockchain, and Decentralized Finance from an economic perspective.',
@@ -91,9 +91,9 @@ const translations = {
     about: {
       title: 'Tentang Saya',
       bio1: 'Lulusan S1 Ekonomi Pembangunan',
-      bio2: 'UNINGRAT TUAL',
+      bio2: 'UNINGRAT TUAL ',
       bio3: '2025, sebelumnya aktif sebagai konten kreator di YouTube & TikTok. Kini fokus membangun karir di persimpangan',
-      bio4: 'Ekonomi',
+      bio4: 'Ekonomi ',
       bio5: 'dan',
       bio6: 'Web3',
       bio7: '- mempelajari Smart Contract, Blockchain, dan Decentralized Finance dari perspektif ekonomi.',
