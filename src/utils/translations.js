@@ -61,7 +61,7 @@ const translations = {
         },
         {
           title: 'DeFi Dashboard',
-          desc: 'Full stack DeFi dashboard with wallet integration, real-time ETH price, transaction history via Etherscan API, and IPFS metadata upload via Pinata.',
+          desc: 'Full stack DeFi dashboard with wallet integration, real-time ETH price, transaction history via Etherscan API, IPFS metadata upload via Pinata, and on-chain staking analytics powered by The Graph.',
         },
       ],
     },
@@ -129,7 +129,7 @@ const translations = {
         },
         {
           title: 'DeFi Dashboard',
-          desc: 'Full stack DeFi dashboard dengan wallet integration, real-time ETH price, transaction history via Etherscan API, dan IPFS metadata upload via Pinata.',
+          desc: 'Full stack DeFi dashboard dengan wallet integration, real-time ETH price, transaction history via Etherscan API, IPFS metadata upload via Pinata, dan staking analytics on-chain powered by The Graph.',
         },
       ],
     },

@@ -27,7 +27,7 @@ function Projects() {
     },
     {
       image: previewDefi,
-      tech: ['React', 'RainbowKit', 'wagmi', 'ethers.js', 'IPFS', 'Vite'],
+      tech: ['React', 'RainbowKit', 'wagmi', 'ethers.js', 'IPFS', 'The Graph', 'Vite'],
       live: 'https://defi-dashboard-pi.vercel.app/',
       github: 'https://github.com/tronic21-ctrl/defi-dashboard',
       status: 'Live',
