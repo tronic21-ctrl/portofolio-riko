@@ -4,7 +4,7 @@ import { useLang } from '../context/LanguageContext'
 
 function About() {
   const [isMobile, setIsMobile] = useState(window.innerWidth < 768)
-  const { t, lang } = useLang()   // Tambah 'lang' untuk terjemahan nama skill
+  const { t, lang } = useLang()
   const a = t.about
 
   useEffect(() => {
@@ -14,25 +14,37 @@ function About() {
   }, [])
 
   const skills = [
+    // Frontend
     { icon: '⚛️', name: 'React', level: 'Intermediate' },
     { icon: '🌐', name: 'JavaScript', level: 'Intermediate' },
     { icon: '🎨', name: 'HTML & CSS', level: 'Intermediate' },
+    { icon: '⚡', name: 'Vite', level: 'Intermediate' },
+    { icon: '🎭', name: 'Framer Motion', level: 'Intermediate' },
+
+    // Blockchain & Web3
     { icon: '💠', name: 'Solidity', level: 'Intermediate' },
     { icon: '🔗', name: 'Blockchain', level: 'Intermediate' },
-    { icon: '🏦', name: 'DeFi', level: 'Intermediate' },
-    { 
-      icon: '📊', 
-      name_en: 'Economy', 
-      name_id: 'Ekonomi', 
-      level: 'Advanced' 
-    },
-    { icon: '📈', name: 'Market Analysis', level: 'Intermediate' },
     { icon: '💻', name: 'Web3', level: 'Intermediate' },
+    { icon: '🏦', name: 'DeFi', level: 'Intermediate' },
+    { icon: '🔐', name: 'Smart Contract Security', level: 'Intermediate' },
+
+    // Tools & Protocols
+    { icon: '🔨', name: 'Foundry', level: 'Intermediate' },
     { icon: '⛑️', name: 'Hardhat', level: 'Beginner' },
     { icon: '🌈', name: 'RainbowKit', level: 'Beginner' },
     { icon: '📦', name: 'IPFS', level: 'Beginner' },
-    { icon: '⚡', name: 'Vite', level: 'Intermediate' },
-    { icon: '🎭', name: 'Framer Motion', level: 'Intermediate' },
+    { icon: '🔵', name: 'The Graph', level: 'Beginner' },
+    { icon: '⛓️', name: 'Chainlink', level: 'Beginner' },
+    { icon: '🗄️', name: '0G Storage', level: 'Beginner' },
+
+    // Economics
+    { icon: '📈', name: 'Market Analysis', level: 'Intermediate' },
+    {
+      icon: '📊',
+      name_en: 'Economy',
+      name_id: 'Ekonomi',
+      level: 'Advanced'
+    },
   ]
 
   return (
@@ -81,19 +93,20 @@ function About() {
             gap: '16px',
           }}>
             {skills.map((skill, index) => {
-              const displayName = lang === 'id' 
-                ? (skill.name_id || skill.name) 
-                : (skill.name_en || skill.name);
+              const displayName = lang === 'id'
+                ? (skill.name_id || skill.name)
+                : (skill.name_en || skill.name)
 
-              const levelColor = skill.level === 'Advanced' 
-                ? 'var(--blue-dark)' 
-                : skill.level === 'Intermediate' 
-                  ? 'var(--blue-dark)' 
-                  : 'var(--blue-dark)';
+              const levelColor =
+                skill.level === 'Advanced'
+                  ? 'var(--purple-accent)'
+                  : skill.level === 'Intermediate'
+                  ? 'var(--blue-primary)'
+                  : 'var(--text-secondary)'
 
               return (
                 <motion.div
-                  key={skill.name}
+                  key={skill.name || skill.name_en}
                   whileHover={{ borderColor: 'var(--blue-primary)', scale: 1.03 }}
                   transition={{ duration: 0.2 }}
                   style={{
@@ -107,22 +120,22 @@ function About() {
                   }}
                 >
                   <span style={{ fontSize: '28px' }}>{skill.icon}</span>
-                  <span style={{ 
-                    color: 'var(--text-heading)', 
-                    fontWeight: 'bold', 
-                    fontSize: '15px' 
+                  <span style={{
+                    color: 'var(--text-heading)',
+                    fontWeight: 'bold',
+                    fontSize: '15px'
                   }}>
                     {displayName}
                   </span>
                   <span style={{
                     color: levelColor,
                     fontSize: '13px',
-                    fontWeight: ['Advanced', 'Intermediate', 'Beginner'].includes(skill.level) ? '400' : '300'
+                    fontWeight: '400',
                   }}>
                     {a.skillLevels[skill.level]}
                   </span>
                 </motion.div>
-              );
+              )
             })}
           </div>
         </motion.div>

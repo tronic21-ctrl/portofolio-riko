@@ -18,6 +18,7 @@ const THEMES = {
     '--navbar-bg': '#0f172a99',
     '--border': '#334155',
     '--gradient-1': '#1e3a5f30',
+    '--purple-accent': '#818cf8',
   },
   light: {
     name: 'light',
@@ -33,6 +34,7 @@ const THEMES = {
     '--navbar-bg': '#ffffffee',
     '--border': '#e2e8f0',            // Border lembut
     '--gradient-1': '#bae6fd30',
+    '--purple-accent': '#6d28d9',
   },
 }
 
